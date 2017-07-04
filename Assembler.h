@@ -5,10 +5,21 @@
  *      Author: Dor
  */
 
+#include "MemoryTable.h"
+#include "SymbolHash.h"
+#include "Utils.h"
 
-#include "utils.h"
 
+typedef struct Databases
+{
+	Symbol_hash symbol_hash;
+	Memory_table code;
+	Command commands[MAX_LINE_SIZE];
 
-void first_pass();
+}Databases;
 
-void second_pass();
+Databases first_pass(File_content f);
+
+Memory_table second_pass(Databases databases);
+
+void writeToObj(char* file_name, Memory_table table);

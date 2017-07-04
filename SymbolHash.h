@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <string.h>
-#include "utils.h"
+#include "Utils.h"
 
 typedef struct data_s {
 	 Bool external;
@@ -31,22 +31,21 @@ struct entry_s {
 
 typedef struct entry_s entry_t;
 
-struct hashtable_s {
+typedef struct symbol_hash {
 	int size;
 	struct entry_s **table;
-};
-
-typedef struct hashtable_s hashtable_t;
+}Symbol_hash;
 
 
-hashtable_t *ht_create( int size );
 
-int ht_hash( hashtable_t *hashtable, char *key );
+Symbol_hash *ht_create( int size );
+
+int ht_hash( Symbol_hash *hashtable, char *key );
 
 entry_t *ht_newpair( char *key, data_s data);
 
-state  ht_set( hashtable_t *hashtable, char *key, char *name, Bool ext, Bool func, uint addr );
+state  ht_set( Symbol_hash *hashtable, char *key, char *name, Bool ext, Bool func, uint addr );
 
-data_s* ht_get( hashtable_t *hashtable, char *key );
+data_s* ht_get( Symbol_hash *hashtable, char *key );
 
 #endif /* SYMBOLHASH_H_ */

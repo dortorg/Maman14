@@ -26,12 +26,12 @@ typedef struct word
 	unsigned int data:10;
 }word;
 
-/*typedef struct command
+typedef struct command
 {
 
 	int number_of_args;
 	char command[80];
-}command;*/
+}Command;
 
 typedef struct File_content
 {
@@ -42,6 +42,8 @@ typedef struct File_content
 typedef enum Bool {FALSE, TRUE} Bool;
 
 typedef enum state {SYMBOL_EXIST, FILE_NOT_EXISTS, SUCCESS} state;
+
+static state status;
 
 Bool isEmptyLine(const char *s);
 

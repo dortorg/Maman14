@@ -12,15 +12,15 @@
 
 
 /* Create a new hashtable. */
-hashtable_t *ht_create( int size ) {
+Symbol_hash *ht_create( int size ) {
 
-	hashtable_t *hashtable = NULL;
+	Symbol_hash *hashtable = NULL;
 	int i;
 
 	if( size < 1 ) return NULL;
 
 	/* Allocate the table itself. */
-	if( ( hashtable = malloc( sizeof( hashtable_t ) ) ) == NULL ) {
+	if( ( hashtable = malloc( sizeof( Symbol_hash ) ) ) == NULL ) {
 		return NULL;
 	}
 
@@ -38,7 +38,7 @@ hashtable_t *ht_create( int size ) {
 }
 
 /* Hash a string for a particular hash table. */
-int ht_hash( hashtable_t *hashtable, char *key ) {
+int ht_hash( Symbol_hash *hashtable, char *key ) {
 
 	unsigned long int hashval;
 	int i = 0;
@@ -78,7 +78,7 @@ entry_t *ht_newpair( char *key, data_s data) {
 }
 
 /* Insert a key-value pair into a hash table. */
-state  ht_set( hashtable_t *hashtable, char *key, char *name, Bool ext, Bool func, uint addr ) {
+state  ht_set( Symbol_hash *hashtable, char *key, char *name, Bool ext, Bool func, uint addr ) {
 	int bin = 0;
 	data_s data;
 	entry_t *newpair = NULL;
@@ -128,7 +128,7 @@ state  ht_set( hashtable_t *hashtable, char *key, char *name, Bool ext, Bool fun
 }
 
 /* Retrieve a key-value pair from a hash table. */
-data_s* ht_get( hashtable_t *hashtable, char *key ) {
+data_s* ht_get( Symbol_hash *hashtable, char *key ) {
 	int bin = 0;
 	entry_t *pair;
 
