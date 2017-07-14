@@ -15,6 +15,7 @@ int main(int argc, char* argv[])
 	char* filename;
 	if(fill_content(argc, argv, &f) == SUCCESS )
 	{
+		printf("dorrrr\n");
 		database = first_pass(f);
 	}
 	if(status == SUCCESS)
