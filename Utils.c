@@ -5,7 +5,7 @@
  *      Author: Dor
  */
 
-#include "utils.h"
+#include "Utils.h"
 
 
 Bool isEmptyLine(const char *s) {
