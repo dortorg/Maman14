@@ -23,14 +23,18 @@ typedef unsigned int uint;
 typedef struct word
 {
 	uint addr;
-	unsigned int data:10;
+	unsigned int ERA:2;
+	unsigned int des:2;
+	unsigned int source:2;
+	unsigned int opcode:4;
+
 }word;
 
 typedef struct command
 {
-
 	int number_of_args;
-	char command[80];
+	char args[MAX_LINE_SIZE];
+	char command[MAX_LINE_SIZE];
 }Command;
 
 typedef struct File_content
@@ -43,12 +47,18 @@ typedef enum Bool {FALSE, TRUE} Bool;
 
 typedef enum state {SYMBOL_EXIST, FILE_NOT_EXISTS, SUCCESS} state;
 
+static FILE *rf;
+
 static state status;
 
 Bool isEmptyLine(const char *s);
 
 void remove_spaces(char* source);
 
-state fill_content(char* file_name, File_content* file);
+state fill_content(int argc, char* argv[], File_content* file);
+
+Bool isComment(char* str);
+
+int initCommands(File_content f, Command** commands);
 
 #endif /* UTILS_H_ */

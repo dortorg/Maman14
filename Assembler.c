@@ -7,14 +7,16 @@
 
 #include "Assembler.h"
 
-void main()
+int main(int argc, char* argv[])
 {
 	File_content f;
 	Databases database;
 	Memory_table code_segment;
 	char* filename;
-
-	database = first_pass(f);
+	if(fill_content(argc, argv, &f) == SUCCESS )
+	{
+		database = first_pass(f);
+	}
 	if(status == SUCCESS)
 	{
 		code_segment = second_pass(database);
@@ -28,16 +30,22 @@ void main()
 		//TODO PRINT ERROR
 	}
 
-
-
-
-
-
+	return 0;
 }
 
 Databases first_pass(File_content f)
 {
+	int count_command;
+	int i;
+	Command *commands = (Command*) malloc(sizeof(Command) * f.number_of_lines);
 	//go over the content of the file and create arr of comands
+	count_command = initCommands(f, &commands);
+	for(i = 0; i < count_command; i++)
+	{
+		printf("command = %s args = %s\n",commands[i].command, commands[i].args);
+	}
+
+
 
 	//split the command
 
