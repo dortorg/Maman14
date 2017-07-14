@@ -2,3 +2,8 @@
 .cproject
 .project
 /.settings
+Assembler.o
+MemoryTable.o
+SymbolHash.o
+Utils.o
+makefile
