@@ -40,7 +40,7 @@ state fill_content(int argc, char* argv[], File_content* file)
  		}
 
  		file->number_of_lines = 0;
- 		while(fgets(str, MAX_LINE_SIZE, stdin) != NULL)
+ 		while(fgets(str, MAX_LINE_SIZE, asm_file) != NULL)
  		{
  			if(isEmptyLine(str) == FALSE)
  			{

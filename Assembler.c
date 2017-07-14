@@ -13,9 +13,10 @@ int main(int argc, char* argv[])
 	Databases database;
 	Memory_table code_segment;
 	char* filename;
+	printf("dorrrr\n");
 	if(fill_content(argc, argv, &f) == SUCCESS )
 	{
-		printf("dorrrr\n");
+
 		database = first_pass(f);
 	}
 	if(status == SUCCESS)
