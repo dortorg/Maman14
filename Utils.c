@@ -5,7 +5,7 @@
  *      Author: Dor
  */
 
-#include "utils.h"
+#include "Utils.h"
 
 
 Bool isEmptyLine(const char *s) {
@@ -74,21 +74,18 @@ Bool isComment(char* str)
 		if(isEmptyLine(f.content[count_command]) == FALSE && isComment(f.content[count_command]) == FALSE)
 		{
 			token = strtok(f.content[count_command], " \n\t");
-			*commands[count]->command = malloc(sizeof(char) * strlen(token));
-			strncpy(*commands[count]->command, token, MAX_LINE_SIZE);
-			remove_spaces(*commands[count]->command);
+			strncpy(commands[count]->command, token, MAX_LINE_SIZE);
+			remove_spaces(commands[count]->command);
 			token = strtok(NULL, "\n");
 
 			if(token != NULL)
 			{
-				*commands[count]->args = malloc(sizeof(char) * strlen(token));
-				strncpy(*commands[count]->args, token, MAX_LINE_SIZE);
-				remove_spaces(*commands[count]->args);
+				strncpy(commands[count]->args, token, MAX_LINE_SIZE);
+				remove_spaces(commands[count]->args);
 			}
 			else
 			{
-				*commands[count]->args = malloc(sizeof(char) * strlen(token));
-				strncpy(*commands[count]->args, "\0", MAX_LINE_SIZE);
+				strncpy(commands[count]->args, "\0", MAX_LINE_SIZE);
 			}
 			count++;
 		}
