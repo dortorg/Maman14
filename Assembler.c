@@ -13,7 +13,6 @@ int main(int argc, char* argv[])
 	Databases database;
 	Memory_table code_segment;
 	char* filename;
-	printf("dorrrr\n");
 	if(fill_content(argc, argv, &f) == SUCCESS )
 	{
 
@@ -42,6 +41,8 @@ Databases first_pass(File_content f)
 	Command *commands = (Command*) malloc(sizeof(Command) * f.number_of_lines);
 	//go over the content of the file and create arr of comands
 	count_command = initCommands(f, &commands);
+	printf("command = %s args = %s\n",commands[0].command, commands[0].args);
+
 	for(i = 0; i < count_command; i++)
 	{
 		printf("command = %s args = %s\n",commands[i].command, commands[i].args);
