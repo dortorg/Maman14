@@ -74,7 +74,8 @@ Bool isComment(char* str)
 	{
 		if(isEmptyLine(f.content[count_command]) == FALSE && isComment(f.content[count_command]) == FALSE)
 		{
-	 		printf("initCommands\n");
+			printf("%s\n",f.content[count_command]);
+	 		printf("initCommands1\n");
 
 			token = strtok(f.content[count_command], " \n\t");
 			strncpy(commands[count]->command, token, MAX_LINE_SIZE);
