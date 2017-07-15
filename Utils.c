@@ -44,6 +44,7 @@ state fill_content(int argc, char* argv[], File_content* file)
  		{
  			if(isEmptyLine(str) == FALSE)
  			{
+ 		 		printf("fill_content1\n");
  				strcpy(file->content[file->number_of_lines++], str);
  			}
  		}
@@ -73,15 +74,20 @@ Bool isComment(char* str)
 	{
 		if(isEmptyLine(f.content[count_command]) == FALSE && isComment(f.content[count_command]) == FALSE)
 		{
+	 		printf("initCommands\n");
+
 			token = strtok(f.content[count_command], " \n\t");
 			strncpy(commands[count]->command, token, MAX_LINE_SIZE);
 			remove_spaces(commands[count]->command);
 			token = strtok(NULL, "\n");
+	 		printf("initCommands2\n");
 
 			if(token != NULL)
 			{
 				strncpy(commands[count]->args, token, MAX_LINE_SIZE);
 				remove_spaces(commands[count]->args);
+		 		printf("initCommands3\n");
+
 			}
 			else
 			{
