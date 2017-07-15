@@ -5,6 +5,7 @@
  *      Author: Dor
  */
 
+#include <stdlib.h>
 #include "Utils.h"
 
 
@@ -65,7 +66,7 @@ Bool isComment(char* str)
 }
 
 
- int initCommands(File_content f, Command** commands)
+Command* initCommands(File_content f)
 {
 	char* token;
 	int count = 0;
@@ -75,41 +76,23 @@ Bool isComment(char* str)
 	{
 		if(isEmptyLine(f.content[count_command]) == FALSE && isComment(f.content[count_command]) == FALSE)
 		{
-			printf("%s\n",f.content[count_command]);
-	 		printf("initCommands1\n");
-
 			token = strtok(f.content[count_command], " \n\t");
-			printf("initCommands2\n");
-			printf("%d\n",count);
 			strncpy(com[count].command, token, MAX_LINE_SIZE);
-
-
 			remove_spaces(com[count].command);
-	 		printf("initCommands3\n");
-
 			token = strtok(NULL, "\n");
-	 		printf("initCommands4\n");
 
 			if(token != NULL)
 			{
 				strncpy(com[count].args, token, MAX_LINE_SIZE);
-		 		printf("initCommands5\n");
-
 				remove_spaces(com[count].args);
-		 		printf("initCommands6\n");
 			}
 			else
 			{
-		 		printf("initCommands7\n");
-
 				strncpy(com[count].args, "\0", MAX_LINE_SIZE);
-		 		printf("initCommands8\n");
-
 			}
 			count++;
 		}
 		count_command++;
 	}
-	commands = &com;
-	return count;
+	return com;
 }

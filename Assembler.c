@@ -41,12 +41,12 @@ Databases first_pass(File_content f)
 	int count_command;
 	int i;
 	printf("lines = %d\n", f.number_of_lines);
-	Command *commands = (Command*) malloc(sizeof(Command) * f.number_of_lines);
+	Command *commands ;
 	//go over the content of the file and create arr of comands
-	count_command = initCommands(f, &commands);
+	commands = initCommands(f);
 	printf("command = %s args = %s\n",commands[0].command, commands[0].args);
 
-	for(i = 0; i < count_command; i++)
+	for(i = 0; i < f.number_of_lines; i++)
 	{
 		printf("command = %s args = %s\n",commands[i].command, commands[i].args);
 	}

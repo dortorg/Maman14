@@ -47,8 +47,6 @@ typedef enum Bool {FALSE, TRUE} Bool;
 
 typedef enum state {SYMBOL_EXIST, FILE_NOT_EXISTS, SUCCESS} state;
 
-static FILE *rf;
-
 static state status;
 
 Bool isEmptyLine(const char *s);
@@ -59,6 +57,6 @@ state fill_content(int argc, char* argv[], File_content* file);
 
 Bool isComment(char* str);
 
-int initCommands(File_content f, Command** commands);
+Command* initCommands(File_content f);
 
 #endif /* UTILS_H_ */
