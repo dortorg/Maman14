@@ -70,6 +70,7 @@ Bool isComment(char* str)
 	char* token;
 	int count = 0;
 	int count_command = 0;
+	Command* com = (Command*)malloc(sizeof(Command) * f.number_of_lines);
 	while(count_command < f.number_of_lines)
 	{
 		if(isEmptyLine(f.content[count_command]) == FALSE && isComment(f.content[count_command]) == FALSE)
@@ -80,10 +81,10 @@ Bool isComment(char* str)
 			token = strtok(f.content[count_command], " \n\t");
 			printf("initCommands2\n");
 			printf("%d\n",count);
-			strncpy(commands[count]->command, token, MAX_LINE_SIZE);
+			strncpy(com[count].command, token, MAX_LINE_SIZE);
 
 
-			remove_spaces(commands[count]->command);
+			remove_spaces(com[count].command);
 	 		printf("initCommands3\n");
 
 			token = strtok(NULL, "\n");
@@ -91,17 +92,17 @@ Bool isComment(char* str)
 
 			if(token != NULL)
 			{
-				strncpy(commands[count]->args, token, MAX_LINE_SIZE);
+				strncpy(com[count].args, token, MAX_LINE_SIZE);
 		 		printf("initCommands5\n");
 
-				remove_spaces(commands[count]->args);
+				remove_spaces(com[count].args);
 		 		printf("initCommands6\n");
 			}
 			else
 			{
 		 		printf("initCommands7\n");
 
-				strncpy(commands[count]->args, "\0", MAX_LINE_SIZE);
+				strncpy(com[count].args, "\0", MAX_LINE_SIZE);
 		 		printf("initCommands8\n");
 
 			}
@@ -109,5 +110,6 @@ Bool isComment(char* str)
 		}
 		count_command++;
 	}
+	commands = &com;
 	return count;
 }
