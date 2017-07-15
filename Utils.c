@@ -78,20 +78,29 @@ Bool isComment(char* str)
 
 			token = strtok(f.content[count_command], " \n\t");
 			strncpy(commands[count]->command, token, MAX_LINE_SIZE);
-			remove_spaces(commands[count]->command);
-			token = strtok(NULL, "\n");
 	 		printf("initCommands2\n");
+
+			remove_spaces(commands[count]->command);
+	 		printf("initCommands3\n");
+
+			token = strtok(NULL, "\n");
+	 		printf("initCommands4\n");
 
 			if(token != NULL)
 			{
 				strncpy(commands[count]->args, token, MAX_LINE_SIZE);
-				remove_spaces(commands[count]->args);
-		 		printf("initCommands3\n");
+		 		printf("initCommands5\n");
 
+				remove_spaces(commands[count]->args);
+		 		printf("initCommands6\n");
 			}
 			else
 			{
+		 		printf("initCommands7\n");
+
 				strncpy(commands[count]->args, "\0", MAX_LINE_SIZE);
+		 		printf("initCommands8\n");
+
 			}
 			count++;
 		}
