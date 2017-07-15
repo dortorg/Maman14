@@ -78,8 +78,9 @@ Bool isComment(char* str)
 	 		printf("initCommands1\n");
 
 			token = strtok(f.content[count_command], " \n\t");
+			printf("initCommands2\n");
 			strncpy(commands[count]->command, token, MAX_LINE_SIZE);
-	 		printf("initCommands2\n");
+
 
 			remove_spaces(commands[count]->command);
 	 		printf("initCommands3\n");
