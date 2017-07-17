@@ -46,13 +46,13 @@ typedef struct File_content
 
 enum args {NONE, ONE, TWO};
 
-enum COMMANDS{MOV, CMP, ADD, SUB, NOT, CLR,
-	LEA, INC, DEC, JMP, BNE, RED, PRN,
-	JSR, RTS, STOP};
+enum COMMANDS{MOV = 0, CMP = 1, ADD = 2, SUB = 3, NOT = 4, CLR = 5,
+	LEA = 6, INC = 7, DEC = 8, JMP = 9, BNE = 10, RED = 11, PRN = 12,
+	JSR = 13, RTS = 14, STOP = 15};
 
 static struct Functions{
     char *name;
-    int code : 3;
+    int code : 4;
     int funcParam;
 }funcs[] = {
     {"mov", MOV, TWO},
