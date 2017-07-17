@@ -20,7 +20,7 @@ void remove_spaces(char* source)
 	char *write = source, *read = source;
 	do {
 	   // Skip space and tab
-	   if (*read != ' ' && *read != '\t')
+	   if (*read != ' ' && *read != '\t' && *read != '\n')
 	       *(write++) = *read;
 	} while (*(read++));
 }
@@ -77,7 +77,7 @@ Command* initCommands(File_content f)
 		if(isEmptyLine(f.content[count_command]) == FALSE && isComment(f.content[count_command]) == FALSE)
 		{
 			token = strtok(f.content[count_command], " \n\t");
-			strncpy(com[count].command, token, strlen(token));
+			strncpy(com[count].command, token, MAX_LINE_SIZE);
 			remove_spaces(com[count].command);
 			token = strtok(NULL, "\n");
 
