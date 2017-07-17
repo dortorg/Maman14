@@ -13,7 +13,8 @@ int main(int argc, char* argv[])
 	Databases* database;
 	Memory_table code_segment;
 	char* filename;
-	status = SUCCESS;
+	status = INVALID_ARGS;
+	printError();
 	printf("fill_content\n");
 	if(fill_content(argc, argv, &f) == SUCCESS )
 	{
