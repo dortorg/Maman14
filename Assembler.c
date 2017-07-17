@@ -57,6 +57,7 @@ Databases first_pass(File_content f)
 
 	for(i = 0; i < f.number_of_lines; ++i)
 	{
+		printf("%s\n",f.content[i] );
 		if(commandExist(f.content[i]) == -1)
 		{
 			break;
