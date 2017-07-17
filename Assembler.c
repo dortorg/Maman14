@@ -23,11 +23,14 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
+		printf("0\n");
 		printError();
 		exit(1);
 	}
 	if(status == SUCCESS)
 	{
+		printf("1\n");
+
 		code_segment = second_pass(*database);
 		if(status == SUCCESS)
 		{
@@ -35,12 +38,16 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
+			printf("2\n");
+
 			printError();
 			exit(1);
 		}
 	}
 	else
 	{
+		printf("3\n");
+
 		printError();
 		exit(1);
 	}

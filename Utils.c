@@ -135,6 +135,5 @@ enum LINE_TYPE lineType(char* line)
 			return GUIDANCE;
 		}
 	}
-	printf("errorrrrrrr\n");
 	return ERROR;
 }
