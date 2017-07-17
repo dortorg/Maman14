@@ -46,7 +46,7 @@ typedef struct File_content
 
 enum args {NONE, ONE, TWO};
 
-enum {MOV, CMP, ADD, SUB, NOT, CLR,
+enum COMMANDS{MOV, CMP, ADD, SUB, NOT, CLR,
 	LEA, INC, DEC, JMP, BNE, RED, PRN,
 	JSR, RTS, STOP};
 
