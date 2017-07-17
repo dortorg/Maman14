@@ -77,7 +77,8 @@ Command* initCommands(File_content f)
 		{
 			token = strtok(f.content[count_command], " \n\t");
 			printf("token = %d\n", strlen(token));
-			strncpy(com[count].command, token, MAX_LINE_SIZE);
+			strncpy(com[count].command, token, strlen(token) + 1);
+			com[count].command[strlen(token) + 1] = '\0';
 			remove_spaces(com[count].command);
 			token = strtok(NULL, "\n");
 
@@ -89,7 +90,7 @@ Command* initCommands(File_content f)
 			}
 			else
 			{
-				strncpy(com[count].args, "\0", MAX_LINE_SIZE);
+				strncpy(com[count].args, "\0", 1);
 			}
 			count++;
 		}
