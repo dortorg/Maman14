@@ -49,12 +49,16 @@ enum args {NONE, ONE, TWO};
 enum COMMANDS{MOV = 0, CMP = 1, ADD = 2, SUB = 3, NOT = 4, CLR = 5,
 	LEA = 6, INC = 7, DEC = 8, JMP = 9, BNE = 10, RED = 11, PRN = 12,
 	JSR = 13, RTS = 14, STOP = 15};
+enum LINE_TYPE{COMMAND, GUIDANCE, SYMBOL, ERROR};
 
-static struct Functions{
+static char* GUIDANCE_LINE = {".extern", ".data", ".entry", ".mat", ".string"};
+
+static struct Line{
     char *name;
+    int type;
     int code : 4;
     int funcParam;
-}funcs[] = {
+}comms[] = {
     {"mov", MOV, TWO},
     {"cmp", CMP, TWO},
     {"add", ADD, TWO},
@@ -100,8 +104,10 @@ Bool isComment(char* str);
 
 Command* initCommands(File_content f);
 
-int commandExist(char* name);
+Bool ifCommand(char* name);
 
 void printError();
+
+enum LINE_TYPE lineType(char* line);
 
 #endif /* UTILS_H_ */

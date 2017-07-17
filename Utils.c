@@ -79,14 +79,12 @@ Command* initCommands(File_content f)
 			printf("token = %d\n", strlen(token));
 			strncpy(com[count].command, token, strlen(token) + 1);
 			com[count].command[strlen(token) + 1] = '\0';
-			remove_spaces(com[count].command);
 			token = strtok(NULL, "\n");
 
 			if(token != NULL)
 			{
 				printf("here\n");
 				strncpy(com[count].args, token, MAX_LINE_SIZE);
-				remove_spaces(com[count].args);
 			}
 			else
 			{
@@ -99,21 +97,43 @@ Command* initCommands(File_content f)
 	return com;
 }
 
-int commandExist(char* name)
+Bool ifCommand(char* name)
 {
 	int i;
 	for(i = 0; i < COMMANDS_NUMBER; ++i)
 	{
-		if(strcmp(funcs[i].name, name) == 0)
+		if(strcmp(comms[i].name, name) == 0)
 		{
-			return i;
+			return TRUE;
 		}
 	}
-	status = INVALID_COMMAND;
-	return -1;
+	return FALSE;
 }
 
 void printError()
 {
 	printf("%s", errorMsgs[status]);
+}
+
+
+enum LINE_TYPE lineType(char* line)
+{
+	int i;
+	if(ifCommand(line) == TRUE)
+	{
+		return COMMAND;
+	}
+	if(line[strlen(line) - 1] == ':')
+	{
+		return SYMBOL;
+	}
+
+	for(i = 0; i < 5; i++)
+	{
+		if(strcmp(GUIDANCE_LINE[i], line) == 0)
+		{
+			return GUIDANCE;
+		}
+	}
+	return ERROR;
 }

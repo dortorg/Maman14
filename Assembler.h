@@ -18,7 +18,7 @@ typedef struct Databases
 
 }Databases;
 
-Databases first_pass(File_content f);
+Databases* first_pass(File_content f);
 
 Memory_table second_pass(Databases databases);
 

@@ -10,7 +10,7 @@
 int main(int argc, char* argv[])
 {
 	File_content f;
-	Databases database;
+	Databases* database;
 	Memory_table code_segment;
 	char* filename;
 	status = SUCCESS;
@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 	}
 	if(status == SUCCESS)
 	{
-		code_segment = second_pass(database);
+		code_segment = second_pass(*database);
 		if(status == SUCCESS)
 		{
 			writeToObj(filename, code_segment);
@@ -48,9 +48,11 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
-Databases first_pass(File_content f)
+Databases* first_pass(File_content f)
 {
 	int i;
+	Databases* database = (Databases*)malloc(sizeof(Databases));
+
 	printf("lines = %d\n", f.number_of_lines);
 	Command *commands ;
 	//go over the content of the file and create arr of comands
@@ -58,18 +60,22 @@ Databases first_pass(File_content f)
 
 	for(i = 0; i < f.number_of_lines; ++i)
 	{
-		printf("%s\n",commands[i].command );
-		printf("%d\n",strlen(commands[i].command) );
-		if(commandExist(commands[i].command) == -1)
+		switch(lineType(commands[i]->command))
 		{
+		case SYMBOL:
+			printf("symbol\n");
+			break;
+		case COMMAND:
+			printf("command\n");
+			break;
+		case GUIDANCE:
+			printf("GUIDANCE\n");
+			break;
+		case ERROR:
+			status = INVALID_COMMAND;
 			break;
 		}
 	}
-
-
-	//split the command
-
-	//check the command
 
 	// add labels to the table and check if there is not the same label in the table
 
