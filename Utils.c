@@ -136,7 +136,5 @@ enum LINE_TYPE lineType(char* line)
 			return GUIDANCE;
 		}
 	}
-	status = INVALID_COMMAND;
-
 	return ERROR;
 }
