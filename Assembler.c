@@ -60,7 +60,7 @@ Databases* first_pass(File_content f)
 
 	for(i = 0; i < f.number_of_lines; ++i)
 	{
-		switch(lineType(commands[i]->command))
+		switch(lineType(commands[i].command))
 		{
 		case SYMBOL:
 			printf("symbol\n");
