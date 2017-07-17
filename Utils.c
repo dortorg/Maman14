@@ -102,7 +102,7 @@ int commandExist(char* name)
 	int i;
 	for(i = 0; i < COMMANDS_NUMBER; ++i)
 	{
-		if(strcmp(funcs[i], name) == 0)
+		if(strcmp(funcs[i].name, name) == 0)
 		{
 			return i;
 		}
