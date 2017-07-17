@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
 	Databases database;
 	Memory_table code_segment;
 	char* filename;
+	status = SUCCESS;
 	printf("fill_content\n");
 	if(fill_content(argc, argv, &f) == SUCCESS )
 	{
