@@ -83,6 +83,7 @@ Command* initCommands(File_content f)
 
 			if(token != NULL)
 			{
+				printf("here\n");
 				strncpy(com[count].args, token, MAX_LINE_SIZE);
 				remove_spaces(com[count].args);
 			}
