@@ -128,6 +128,8 @@ enum LINE_TYPE lineType(char* line)
 		return SYMBOL;
 	}
 
+
+	printf("ass\n");
 	for(i = 0; i < 5; i++)
 	{
 		if(strcmp(GUIDANCE_LINE[i], line) == 0)
