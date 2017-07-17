@@ -48,6 +48,7 @@ int main(int argc, char* argv[])
 	else
 	{
 		printf("3\n");
+		printf("ssssss = %d\n",status);
 
 		printError();
 		exit(1);
