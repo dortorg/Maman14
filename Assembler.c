@@ -59,7 +59,6 @@ Databases first_pass(File_content f)
 	{
 		if(commandExist(f.content[i]) == -1)
 		{
-			printError();
 			break;
 		}
 	}
