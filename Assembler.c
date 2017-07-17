@@ -81,7 +81,6 @@ Databases* first_pass(File_content f)
 			printf("GUIDANCE\n");
 			break;
 		case ERROR:
-			status = INVALID_COMMAND;
 			break;
 		}
 	}
