@@ -20,6 +20,11 @@ int main(int argc, char* argv[])
 
 		database = first_pass(f);
 	}
+	else
+	{
+		printError();
+		exit(1);
+	}
 	if(status == SUCCESS)
 	{
 		code_segment = second_pass(database);
@@ -27,10 +32,16 @@ int main(int argc, char* argv[])
 		{
 			writeToObj(filename, code_segment);
 		}
+		else
+		{
+			printError();
+			exit(1);
+		}
 	}
 	else
 	{
-		//TODO PRINT ERROR
+		printError();
+		exit(1);
 	}
 
 	return 0;
@@ -38,19 +49,20 @@ int main(int argc, char* argv[])
 
 Databases first_pass(File_content f)
 {
-	int count_command;
 	int i;
 	printf("lines = %d\n", f.number_of_lines);
 	Command *commands ;
 	//go over the content of the file and create arr of comands
 	commands = initCommands(f);
-	printf("command = %s args = %s\n",commands[0].command, commands[0].args);
 
-	for(i = 0; i < f.number_of_lines; i++)
+	for(i = 0; i < f.number_of_lines; ++i)
 	{
-		printf("command = %s args = %s\n",commands[i].command, commands[i].args);
+		if(commandExist(f.content[i]) == -1)
+		{
+			printError();
+			break;
+		}
 	}
-
 
 
 	//split the command

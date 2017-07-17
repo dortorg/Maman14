@@ -17,6 +17,7 @@
 
 #define MAX_LINE_SIZE 80
 #define MAX_NUMBER_OF_LINES 256
+#define COMMANDS_NUMBER 16
 
 typedef unsigned int uint;
 
@@ -43,11 +44,51 @@ typedef struct File_content
 	char content[MAX_NUMBER_OF_LINES][MAX_LINE_SIZE];
 }File_content;
 
+enum args {NONE, ONE, TWO};
+
+enum {MOV, CMP, ADD, SUB, NOT, CLR,
+	LEA, INC, DEC, JMP, BNE, RED, PRN,
+	JSR, RTS, STOP};
+
+static struct Functions{
+    char *name;
+    int code : 3;
+    int funcParam;
+}funcs[] = {
+    {"mov", MOV, TWO},
+    {"cmp", CMP, TWO},
+    {"add", ADD, TWO},
+    {"sub", SUB, TWO},
+    {"not", NOT, ONE},
+    {"clr", CLR, ONE},
+    {"lea", LEA, TWO},
+    {"inc", INC, ONE},
+    {"dec", DEC, ONE},
+	{"jmp", JMP, ONE},
+	{"bne", BNE, ONE},
+	{"red", RED, ONE},
+	{"prn", PRN, ONE},
+	{"jsr", JSR, ONE},
+	{"rts", RTS, NONE},
+	{"stop", STOP, NONE}
+};
+
 typedef enum Bool {FALSE, TRUE} Bool;
 
-typedef enum state {SYMBOL_EXIST, FILE_NOT_EXISTS, SUCCESS} state;
+typedef enum state {SYMBOL_EXIST, FILE_NOT_EXISTS, INVALID_COMMAND, INVALID_ARGS, SUCCESS} state;
 
 static state status;
+
+/*List: Errors*/
+static char *errorMsgs[] = {
+    "*ERROR: Symbol exist\n",
+    "*ERROR: file not exist\n",
+    "*ERROR: invalid command\n",
+	"*ERROR: invalid args\n",
+
+};
+
+
 
 Bool isEmptyLine(const char *s);
 
@@ -58,5 +99,9 @@ state fill_content(int argc, char* argv[], File_content* file);
 Bool isComment(char* str);
 
 Command* initCommands(File_content f);
+
+int commandExist(char* name);
+
+void printError();
 
 #endif /* UTILS_H_ */

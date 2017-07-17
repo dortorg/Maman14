@@ -43,7 +43,7 @@ state fill_content(int argc, char* argv[], File_content* file)
  		file->number_of_lines = 0;
  		while(fgets(str, MAX_LINE_SIZE, asm_file) != NULL)
  		{
- 			if(isEmptyLine(str) == FALSE)
+ 			if(isEmptyLine(str) == FALSE && isComment(str) == FALSE)
  			{
  		 		printf("fill_content1\n");
  				strcpy(file->content[file->number_of_lines++], str);
@@ -95,4 +95,23 @@ Command* initCommands(File_content f)
 		count_command++;
 	}
 	return com;
+}
+
+int commandExist(char* name)
+{
+	int i;
+	for(i = 0; i < COMMANDS_NUMBER; ++i)
+	{
+		if(strcmp(funcs[i], name) == 0)
+		{
+			return i;
+		}
+	}
+	status = INVALID_COMMAND;
+	return -1;
+}
+
+void printError()
+{
+	printf("%s", errorMsgs[status]);
 }
