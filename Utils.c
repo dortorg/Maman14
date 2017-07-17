@@ -77,7 +77,7 @@ Command* initCommands(File_content f)
 		if(isEmptyLine(f.content[count_command]) == FALSE && isComment(f.content[count_command]) == FALSE)
 		{
 			token = strtok(f.content[count_command], " \n\t");
-			strncpy(com[count].command, token, MAX_LINE_SIZE);
+			strncpy(com[count].command, token, strlen(token));
 			remove_spaces(com[count].command);
 			token = strtok(NULL, "\n");
 
