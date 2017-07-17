@@ -112,6 +112,7 @@ Bool ifCommand(char* name)
 
 void printError()
 {
+	printf("ssssss = %d\n",status);
 	printf("%s", errorMsgs[status]);
 }
 

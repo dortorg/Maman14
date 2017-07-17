@@ -20,6 +20,7 @@ int main(int argc, char* argv[])
 		printf("first_pass\n");
 
 		database = first_pass(f);
+		printf("ssssss = %d\n",status);
 	}
 	else
 	{

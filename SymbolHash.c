@@ -103,7 +103,7 @@ state  ht_set( Symbol_hash *hashtable, char *key, char *name, Bool ext, Bool fun
 	/* There's already a pair.  Let's replace that string. */
 	if( next != NULL && next->key != NULL && strcmp( key, next->key ) == 0 ) {
 
-		//return SYMBOL_EXIST;
+		return SYMBOL_EXIST;
 
 	/* Nope, could't find it.  Time to grow a pair. */
 	} else {
