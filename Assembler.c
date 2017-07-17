@@ -13,7 +13,6 @@ int main(int argc, char* argv[])
 	Databases* database;
 	Memory_table code_segment;
 	char* filename;
-	status = INVALID_ARGS;
 	printError();
 	printf("fill_content\n");
 	if(fill_content(argc, argv, &f) == SUCCESS )
@@ -21,7 +20,7 @@ int main(int argc, char* argv[])
 		printf("first_pass\n");
 
 		database = first_pass(f);
-		printf("ssssss = %d\n",status);
+		printf("ssssss = %d\n",statusss);
 	}
 	else
 	{
@@ -29,12 +28,12 @@ int main(int argc, char* argv[])
 		printError();
 		exit(1);
 	}
-	if(status == SUCCESS)
+	if(statusss == SUCCESS)
 	{
 		printf("1\n");
 
 		code_segment = second_pass(*database);
-		if(status == SUCCESS)
+		if(statusss == SUCCESS)
 		{
 			writeToObj(filename, code_segment);
 		}
@@ -49,7 +48,7 @@ int main(int argc, char* argv[])
 	else
 	{
 		printf("3\n");
-		printf("ssssss = %d\n",status);
+		printf("ssssss = %d\n",statusss);
 
 		printError();
 		exit(1);
@@ -82,7 +81,7 @@ Databases* first_pass(File_content f)
 			printf("GUIDANCE\n");
 			break;
 		case ERROR:
-			status = INVALID_COMMAND;
+			statusss = INVALID_COMMAND;
 			printError();
 			exit(1);
 			break;

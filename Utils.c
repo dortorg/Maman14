@@ -112,8 +112,8 @@ Bool ifCommand(char* name)
 
 void printError()
 {
-	printf("ssssss = %d\n",status);
-	printf("%s", errorMsgs[status]);
+	statusss = INVALID_ARGS;
+	printf("%s", errorMsgs[statusss]);
 }
 
 

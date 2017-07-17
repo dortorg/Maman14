@@ -81,7 +81,7 @@ typedef enum Bool {FALSE, TRUE} Bool;
 
 typedef enum state {SYMBOL_EXIST, FILE_NOT_EXISTS, INVALID_COMMAND, INVALID_ARGS, SUCCESS} state;
 
-static state status;
+static state statusss;
 
 /*List: Errors*/
 static char *errorMsgs[] = {
