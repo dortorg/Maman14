@@ -26,10 +26,10 @@ int main(int argc, char* argv[])
 		printError();
 		exit(1);
 	}
-	if(status == SUCCESS)
+	if(error.status == SUCCESS)
 	{
 		code_segment = second_pass(*database);
-		if(status == SUCCESS)
+		if(error.status == SUCCESS)
 		{
 			writeToObj(filename, code_segment);
 		}
@@ -72,7 +72,7 @@ Databases* first_pass(File_content f)
 			printf("GUIDANCE\n");
 			break;
 		case ERROR:
-			setState(INVALID_COMMAND);
+			setError(INVALID_COMMAND, i, f.content[i]);
 			printError();
 			exit(1);
 			break;

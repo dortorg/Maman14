@@ -112,7 +112,8 @@ Bool ifCommand(char* name)
 
 void printError()
 {
-	printf("%s", errorMsgs[status]);
+	printf("%s", errorMsgs[error.line_number]);
+	printf("line number %d : %s", error.line_number, error.line);
 }
 
 
@@ -138,7 +139,9 @@ enum LINE_TYPE lineType(char* line)
 	return ERROR;
 }
 
-void setState(state s)
+void setError(state s, int line, char* name)
 {
-	status = s;
+	error.status = s;
+	error.line_number = line;
+	strcpy(error.line, name);
 }
