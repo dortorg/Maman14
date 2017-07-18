@@ -20,36 +20,27 @@ int main(int argc, char* argv[])
 		printf("first_pass\n");
 
 		database = first_pass(f);
-		printf("ssssss = %d\n",statusss);
 	}
 	else
 	{
-		printf("0\n");
 		printError();
 		exit(1);
 	}
-	if(statusss == SUCCESS)
+	if(status == SUCCESS)
 	{
-		printf("1\n");
-
 		code_segment = second_pass(*database);
-		if(statusss == SUCCESS)
+		if(status == SUCCESS)
 		{
 			writeToObj(filename, code_segment);
 		}
 		else
 		{
-			printf("2\n");
-
 			printError();
 			exit(1);
 		}
 	}
 	else
 	{
-		printf("3\n");
-		printf("ssssss = %d\n",statusss);
-
 		printError();
 		exit(1);
 	}
@@ -81,7 +72,7 @@ Databases* first_pass(File_content f)
 			printf("GUIDANCE\n");
 			break;
 		case ERROR:
-			statusss = INVALID_COMMAND;
+			setState(INVALID_COMMAND);
 			printError();
 			exit(1);
 			break;
