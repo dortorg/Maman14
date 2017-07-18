@@ -94,7 +94,7 @@ typedef struct Error
 {
 	 state status;
 	 int line_number;
-	 char* line;
+	 char line[MAX_LINE_SIZE];
 }Error;
 static Error error = {SUCCESS, -1, ""};
 
