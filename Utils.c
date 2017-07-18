@@ -112,7 +112,6 @@ Bool ifCommand(char* name)
 
 void printError()
 {
-	statusss = INVALID_ARGS;
 	printf("%s", errorMsgs[statusss]);
 }
 
@@ -136,5 +135,6 @@ enum LINE_TYPE lineType(char* line)
 			return GUIDANCE;
 		}
 	}
+	statusss = INVALID_ARGS;
 	return ERROR;
 }
