@@ -14,6 +14,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
+
 
 #define MAX_LINE_SIZE 80
 #define MAX_NUMBER_OF_LINES 256
@@ -34,9 +36,11 @@ typedef struct word
 typedef struct command
 {
 	int number_of_args;
+	char* arg1,arg2;
 	char args[MAX_LINE_SIZE];
 	char command[MAX_LINE_SIZE];
 }Command;
+
 
 typedef struct File_content
 {
@@ -57,7 +61,6 @@ static const char GUIDANCE_LINE[5][10] = {".extern", ".data", ".entry", ".mat", 
 
 static struct Line{
     char *name;
-    int type;
     int code : 4;
     int funcParam;
 }comms[] = {
@@ -117,5 +120,9 @@ void printError();
 enum LINE_TYPE lineType(char* line);
 
 void setError(state s, int line, char* name);
+
+state checkCommand(Command *comm);
+
+
 
 #endif /* UTILS_H_ */

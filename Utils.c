@@ -29,13 +29,13 @@ state fill_content(int argc, char* argv[], File_content* file)
 {
 	FILE *asm_file;
 	char str[MAX_LINE_SIZE];
- 	if(argc != 2)
+ /*	if(argc != 2)
  	{
  		return FILE_NOT_EXISTS;
- 	}
- 	else
- 	{
- 		if((asm_file = fopen(argv[1],"r")) == NULL)
+ 	}*/
+/* 	else
+ 	{*/
+ 		if((asm_file = fopen("dor"/*argv[1]*/,"r")) == NULL)
  		{
  			return FILE_NOT_EXISTS;
  		}
@@ -48,7 +48,7 @@ state fill_content(int argc, char* argv[], File_content* file)
  				strcpy(file->content[file->number_of_lines++], str);
  			}
  		}
- 	}
+ 	//}
  	return SUCCESS;
 }
 
@@ -143,4 +143,34 @@ void setError(state s, int line, char* name)
 	error.status = s;
 	error.line_number = line;
 	strcpy(error.line, name);
+}
+
+state checkCommand(Command* comm)
+{
+	int i;
+	comm->arg1 = strtok(comm->args, ",\n");
+	comm->arg2 = strtok(NULL, ",\n");
+	printf("%s\n", comm->arg2)
+	for(i = 0; i < COMMANDS_NUMBER; ++i)
+	{
+		if(strcmp(comms[i].name, comm->command) == 0)
+		{
+			break;
+		}
+	}
+	if(i == COMMANDS_NUMBER)
+	{
+		return INVALID_COMMAND;
+	}else if(comm->arg1 == NULL && comms[i].funcParam != 0)
+	{
+		return INVALID_ARGS;
+	}else if(comm->arg2 == NULL && comms[i].funcParam != 1)
+	{
+		return INVALID_ARGS;
+	}else if(comm->arg2 != NULL && comms[i].funcParam != 2)
+	{
+		return INVALID_ARGS;
+	}
+	comm->number_of_args = comms[i].funcParam;
+	return SUCCESS;
 }
