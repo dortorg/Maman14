@@ -150,7 +150,7 @@ state checkCommand(Command* comm)
 	int i;
 	comm->arg1 = strtok(comm->args, ",\n");
 	comm->arg2 = strtok(NULL, ",\n");
-	printf("%s\n", comm->arg2)
+	printf("%s\n", comm->arg2);
 	for(i = 0; i < COMMANDS_NUMBER; ++i)
 	{
 		if(strcmp(comms[i].name, comm->command) == 0)
