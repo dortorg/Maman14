@@ -51,7 +51,9 @@ enum COMMANDS{MOV = 0, CMP = 1, ADD = 2, SUB = 3, NOT = 4, CLR = 5,
 	JSR = 13, RTS = 14, STOP = 15};
 enum LINE_TYPE{COMMAND, GUIDANCE, SYMBOL, ERROR};
 
-static const char (*GUIDANCE_LINE)[5] = {".extern", ".data", ".entry", ".mat", ".string"};
+static const char GUIDANCE_LINE[5][10] = {".extern", ".data", ".entry", ".mat", ".string"};
+
+
 
 static struct Line{
     char *name;

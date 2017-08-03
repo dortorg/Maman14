@@ -76,7 +76,6 @@ Command* initCommands(File_content f)
 		if(isEmptyLine(f.content[count_command]) == FALSE && isComment(f.content[count_command]) == FALSE)
 		{
 			token = strtok(f.content[count_command], " \n\t");
-			printf("token = %d\n", strlen(token));
 			strncpy(com[count].command, token, strlen(token) + 1);
 			com[count].command[strlen(token) + 1] = '\0';
 			token = strtok(NULL, "\n");

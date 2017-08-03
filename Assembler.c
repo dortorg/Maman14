@@ -6,15 +6,15 @@
  */
 
 #include "Assembler.h"
-
+#include <stdio.h>
 int main(int argc, char* argv[])
 {
 	File_content f;
 	Databases* database;
 	Memory_table code_segment;
 	char* filename;
-	//printError();
 	printf("fill_content\n");
+	
 	if(fill_content(argc, argv, &f) == SUCCESS )
 	{
 		printf("first_pass\n");
@@ -44,6 +44,7 @@ int main(int argc, char* argv[])
 		printError();
 		exit(1);
 	}
+	
 
 	return 0;
 }
@@ -53,7 +54,6 @@ Databases* first_pass(File_content f)
 	int i;
 	Databases* database = (Databases*)malloc(sizeof(Databases));
 
-	printf("lines = %d\n", f.number_of_lines);
 	Command *commands ;
 	//go over the content of the file and create arr of comands
 	commands = initCommands(f);
