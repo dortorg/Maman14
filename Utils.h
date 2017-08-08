@@ -30,13 +30,15 @@ typedef struct word
 	unsigned int des:2;
 	unsigned int source:2;
 	unsigned int opcode:4;
+	unsigned int data:10;
 
 }word;
 
 typedef struct command
 {
 	int number_of_args;
-	char* arg1,arg2;
+	char* arg1;
+	char* arg2;
 	char args[MAX_LINE_SIZE];
 	char command[MAX_LINE_SIZE];
 }Command;
@@ -57,7 +59,9 @@ enum LINE_TYPE{COMMAND, GUIDANCE, SYMBOL, ERROR};
 
 static const char GUIDANCE_LINE[5][10] = {".extern", ".data", ".entry", ".mat", ".string"};
 
+enum GUIDANCE_TYPE{ EXTERN, DATA, ENTRY, MAT, STRING};
 
+#define GUIDANCE_SIZE 5
 
 static struct Line{
     char *name;
@@ -123,6 +127,15 @@ void setError(state s, int line, char* name);
 
 state checkCommand(Command *comm);
 
+Bool ifMat(char* str);
+
+Bool ifReg(char* str);
+
+Bool ifNumber(char* str);
+
+Command createCommand(char* str);
+
+enum GUIDANCE_TYPE guidanceType(char* type);
 
 
 #endif /* UTILS_H_ */

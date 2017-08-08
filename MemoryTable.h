@@ -13,12 +13,12 @@
 
 typedef struct Memory_table
 {
-	uint count_words;
+	uint address;
 	word words[MAX_NUMBER_OF_LINES];
 }Memory_table;
 
 
-Memory_table* create_database(uint starting_addr);
+Memory_table* create_Memory_Table(uint starting_addr);
 
 state add(Memory_table* memory_table, int field);
 
